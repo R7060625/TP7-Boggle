@@ -17,15 +17,15 @@ typedef struct {
 
 typedef struct { int dx; int dy; } Direction;
 
-const Direction directions[8] = {
-    { 0, -1}, { 0,  1}, {-1,  0}, { 1,  0},  
-    {-1, -1}, { 1, -1}, {-1,  1}, { 1,  1}   
-};
-
 typedef struct {
     char lettre;
     double cumul;
 } Probabilite;
+
+const Direction directions[8] = {
+    { 0, -1}, { 0,  1}, {-1,  0}, { 1,  0},  
+    {-1, -1}, { 1, -1}, {-1,  1}, { 1,  1}   
+};
 
 const Probabilite lettres[26] = {
         {'E', 0.11},
@@ -39,10 +39,12 @@ const Probabilite lettres[26] = {
         {'J', 0.95}, {'K', 0.96}, {'Q', 0.97}, {'V', 0.98}, {'X', 0.99}, {'Z', 1.00}
     };
 
+/* Retourne un caractère compris entre 'a' et 'z' selon une 
+ * une table de probabilités */
+char lettre_random();
+
 /* Initialise la grille Grille avec des lettres générées aléatoirement */
 void initialiser_grille(Grille grille);
-
-char lettre_random();
 
 /* Retourne 1 si la case à la position (x,y) 
  * de la grille est une case voisine de la case courante 
